@@ -3,17 +3,14 @@ const ctx = canvas.getContext('2d');
 let width, height;
 let drops = [];
 let lastTime = 0;
-
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const frameInterval = prefersReducedMotion ? 1000 : 160; // gentler matrix animation
-const dropSpeed = prefersReducedMotion ? 0.2 : 0.35;
-
+const frameInterval = 50; // faster cadence for energetic background
+const dropSpeed = 0.8;
 const characters = 'AI010101CYBERDATASECUREAUTOMATE';
 
 function resizeCanvas() {
   width = canvas.width = window.innerWidth;
   height = canvas.height = window.innerHeight;
-  const columns = Math.floor(width / 20);
+  const columns = Math.floor(width / 18);
   drops = Array(columns).fill(1);
 }
 
@@ -24,16 +21,16 @@ function drawMatrix(timestamp) {
   }
   lastTime = timestamp;
 
-  ctx.fillStyle = 'rgba(5, 13, 24, 0.1)';
+  ctx.fillStyle = 'rgba(5, 13, 24, 0.08)';
   ctx.fillRect(0, 0, width, height);
   ctx.fillStyle = 'rgba(29, 212, 255, 0.7)';
   ctx.font = '16px "Space Grotesk"';
 
   drops.forEach((y, i) => {
     const text = characters.charAt(Math.floor(Math.random() * characters.length));
-    const x = i * 20;
-    ctx.fillText(text, x, y * 20);
-    drops[i] = y * 20 > height && Math.random() > 0.96 ? 0 : y + dropSpeed;
+    const x = i * 18;
+    ctx.fillText(text, x, y * 18);
+    drops[i] = y * 18 > height && Math.random() > 0.975 ? 0 : y + dropSpeed;
   });
 
   requestAnimationFrame(drawMatrix);
