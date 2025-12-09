@@ -32,6 +32,11 @@ canvas#matrix-canvas {
   opacity: 0.35;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  canvas#matrix-canvas { opacity: 0.2; }
+  *, *::before, *::after { transition: none !important; animation-duration: 0.01ms !important; }
+}
+
 main, header, footer {
   position: relative;
   z-index: 1;
@@ -176,71 +181,6 @@ main, header, footer {
   font-size: 0.95rem;
 }
 
-.hero__visual {
-  position: relative;
-  min-height: 320px;
-}
-
-.holo-card {
-  background: linear-gradient(180deg, rgba(29, 212, 255, 0.15), rgba(8, 20, 40, 0.9));
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow: 0 30px 80px rgba(29, 212, 255, 0.2);
-  width: min(360px, 90%);
-  position: absolute;
-  right: 0;
-  top: 20px;
-  backdrop-filter: blur(8px);
-}
-
-.holo-icon {
-  font-size: 2rem;
-}
-
-.holo-card h3 { margin: 8px 0; }
-
-.holo-card p { color: var(--muted); }
-
-.holo-card .pulse {
-  position: absolute;
-  inset: -2px;
-  border-radius: 18px;
-  border: 1px solid rgba(29, 212, 255, 0.3);
-  filter: blur(6px);
-  opacity: 0.6;
-  animation: pulse 2.2s ease-in-out infinite;
-}
-
-.holo-grid {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  filter: drop-shadow(0 0 16px rgba(29, 212, 255, 0.4));
-  pointer-events: none;
-}
-
-.grid-line {
-  width: 80%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(29, 212, 255, 0.6), transparent);
-  animation: shimmer 3s linear infinite;
-}
-
-.grid-line:nth-child(2) { transform: rotate(90deg); }
-.grid-line:nth-child(3) { transform: rotate(45deg); animation-duration: 2.8s; }
-.grid-line:nth-child(4) { transform: rotate(-45deg); animation-duration: 2.4s; }
-
-.grid-point {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--accent);
-  opacity: 0.8;
-  animation: float 4s ease-in-out infinite;
-}
-
 .panel {
   max-width: 1200px;
   margin: 0 auto;
@@ -254,7 +194,6 @@ main, header, footer {
 .panel.in-view,
 .service-card.in-view,
 .project-card.in-view,
-.holo-card.in-view,
 .pill.in-view {
   opacity: 1;
   transform: translateY(0);
