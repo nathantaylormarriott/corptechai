@@ -1,34 +1,23 @@
 # CorpTech AI Landing Page
 
-Conversion-focused, neon-styled landing page for CorpTech AI — an automation, cybersecurity, and marketing intelligence consultancy.
+This repository contains the CorpTech AI consultancy landing page with sections for hero, about, services, projects, process, and contact. The experience features neon gradients, holographic cards, scroll-triggered reveals, and a slowed matrix-style background animation.
 
-## Sections
-- Hero with CTA, stats, and holographic insight cards
-- About pillars explaining differentiation
-- Services grid for consultancy, automation, cybersecurity, and marketing pods
-- Recent projects with metrics
-- Delivery process timeline
-- Contact form for strategy calls
+## Running locally
+Open `index.html` directly in your browser or serve the folder with any static file server, for example:
 
-## Run locally
-Open `index.html` in your browser or serve the directory:
 ```bash
 python -m http.server 8000
 ```
-Then visit `http://localhost:8000`.
 
-## Merge guidance
-If GitHub shows merge conflicts on `README.md`, `index.html`, `styles.css`, or `script.js`, keep the versions from this branch. These files contain the full original landing experience with the holographic hero cards and animated background.
+Then visit http://localhost:8000/.
 
-### Quick resolve recipe (when `main` has diverged)
-1. Check out this branch locally: `git fetch origin && git checkout work` (or the branch containing this site).
-2. Start the merge: `git merge main`.
-3. When prompted with conflicts on the landing files, **choose "Accept Incoming"** in GitHub Desktop/VS Code, or run the CLI equivalent:
-   ```bash
-   git checkout --theirs README.md index.html styles.css script.js
-   git add README.md index.html styles.css script.js
-   git commit -m "Resolve landing page conflicts"
-   ```
-4. Push the branch and complete the pull request back into `main`.
+## Deploying to main
+The latest code lives on this branch. To replace the `main` branch with it, merge or fast-forward `main` to this commit:
 
-This sequence ensures the original site files remain unchanged while resolving the README conflict cleanly.
+```bash
+git checkout main
+git merge work
+# or: git checkout main && git reset --hard <this_commit>
+```
+
+Push the updated `main` branch to your remote to publish the site.
