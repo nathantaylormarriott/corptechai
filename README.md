@@ -16,3 +16,6 @@ Open `index.html` in your browser or serve the directory:
 python -m http.server 8000
 ```
 Then visit `http://localhost:8000`.
+
+## Merge guidance
+If GitHub shows merge conflicts on `README.md`, `index.html`, `styles.css`, or `script.js`, keep the versions from this branch. These files contain the full original landing experience with the holographic hero cards and animated background.
