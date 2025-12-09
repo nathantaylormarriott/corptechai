@@ -4,8 +4,9 @@ let width, height;
 let drops = [];
 let lastTime = 0;
 
-const frameInterval = 120; // slower matrix animation
-const dropSpeed = 0.5;
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const frameInterval = prefersReducedMotion ? 1000 : 160; // gentler matrix animation
+const dropSpeed = prefersReducedMotion ? 0.2 : 0.35;
 
 const characters = 'AI010101CYBERDATASECUREAUTOMATE';
 
@@ -23,9 +24,9 @@ function drawMatrix(timestamp) {
   }
   lastTime = timestamp;
 
-  ctx.fillStyle = 'rgba(5, 13, 24, 0.12)';
+  ctx.fillStyle = 'rgba(5, 13, 24, 0.1)';
   ctx.fillRect(0, 0, width, height);
-  ctx.fillStyle = 'rgba(29, 212, 255, 0.75)';
+  ctx.fillStyle = 'rgba(29, 212, 255, 0.7)';
   ctx.font = '16px "Space Grotesk"';
 
   drops.forEach((y, i) => {

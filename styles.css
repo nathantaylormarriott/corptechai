@@ -32,6 +32,11 @@ canvas#matrix-canvas {
   opacity: 0.35;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  canvas#matrix-canvas { opacity: 0.2; }
+  *, *::before, *::after { transition: none !important; animation-duration: 0.01ms !important; }
+}
+
 main, header, footer {
   position: relative;
   z-index: 1;
